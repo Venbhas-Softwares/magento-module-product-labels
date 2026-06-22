@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <venbhas_productlabels>
+            <general>
+                <enabled>1</enabled>
+                <max_labels>2</max_labels>
+                <z_index>10</z_index>
+            </general>
+            <developer>
+                <enable_logging>0</enable_logging>
+                <log_level>info</log_level>
+            </developer>
+        </venbhas_productlabels>
+    </default>
+</config>

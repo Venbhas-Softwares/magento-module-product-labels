@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">venbhas_productlabels_form.venbhas_productlabels_form_data_source</item>
+            <item name="namespace" xsi:type="string">venbhas_productlabels_form</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Product Label</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Venbhas\ProductLabels\Block\Adminhtml\Label\Edit\SaveButton"/>
+            <button name="delete" class="Venbhas\ProductLabels\Block\Adminhtml\Label\Edit\DeleteButton"/>
+            <button name="back" class="Venbhas\ProductLabels\Block\Adminhtml\Label\Edit\BackButton"/>
+        </buttons>
+        <namespace>venbhas_productlabels_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>venbhas_productlabels_form.venbhas_productlabels_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="venbhas_productlabels_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="productlabels/label/save"/>
+        </settings>
+        <dataProvider class="Venbhas\ProductLabels\Model\Label\DataProvider" name="venbhas_productlabels_form_data_source">
+            <settings>
+                <requestFieldName>label_id</requestFieldName>
+                <primaryFieldName>label_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label translate="true">General</label>
+        </settings>
+        <field name="label_id" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+            </settings>
+        </field>
+        <field name="name" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+            </settings>
+        </field>
+        <field name="is_active" formElement="checkbox">
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Is Active</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="priority" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="validate-digits" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Priority</label>
+                <notice translate="true">Lower number = higher priority.</notice>
+            </settings>
+        </field>
+        <field name="from_date" formElement="date">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">From Date</label>
+            </settings>
+        </field>
+        <field name="to_date" formElement="date">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">To Date</label>
+            </settings>
+        </field>
+        <field name="storeviews" formElement="multiselect" class="Magento\Store\Ui\Component\Form\Field\StoreView">
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Store Views</label>
+                <notice translate="true">Leave empty or select "All Store Views" to apply to all store views.</notice>
+                <dataScope>store_id</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Venbhas\ProductLabels\Model\Label\Source\StoreOptions"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="customer_group_ids" formElement="multiselect">
+            <settings>
+                <dataType>number</dataType>
+                <label translate="true">Customer Groups</label>
+                <notice translate="true">Leave empty to show for all customer groups.</notice>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Magento\Customer\Model\ResourceModel\Group\Collection"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+    </fieldset>
+    <htmlContent name="block_conditions" sortOrder="20">
+        <argument name="data" xsi:type="array">
+            <item name="wrapper" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Conditions</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <settings>
+            <wrapper>
+                <canShow>true</canShow>
+                <componentType>fieldset</componentType>
+            </wrapper>
+        </settings>
+        <block class="Venbhas\ProductLabels\Block\Adminhtml\Label\Edit\Tab\Conditions" name="venbhas_productlabels_edit_tab_conditions"/>
+    </htmlContent>
+    <fieldset name="label_settings">
+        <settings>
+            <label translate="true">Label Settings</label>
+        </settings>
+        <field name="label_type" formElement="select" component="Venbhas_ProductLabels/js/form/element/label-type">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Label Type</label>
+                <notice translate="true">Text: enter fixed badge text (e.g. "Sale", "-20%"). Discount: badge text is calculated automatically from the product's regular price and final price.</notice>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Venbhas\ProductLabels\Model\Label\Source\LabelType"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="text_content" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Text Content</label>
+                <notice translate="true">Static text shown on the badge, e.g. "New", "Sale", or "-20%".</notice>
+                <visible>false</visible>
+            </settings>
+        </field>
+        <field name="discount_display" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Discount Display Format</label>
+                <notice translate="true">No value is entered here. The discount is calculated per product as (regular price − final price). Choose whether to show that as a percentage (e.g. -20%) or a currency amount (e.g. -$12.00). The label is hidden if the product has no active discount.</notice>
+                <visible>false</visible>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Venbhas\ProductLabels\Model\Label\Source\DiscountDisplay"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="bg_color" formElement="colorPicker">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Background Colour</label>
+            </settings>
+            <formElements>
+                <colorPicker>
+                    <settings>
+                        <colorFormat>hex</colorFormat>
+                        <colorPickerMode>full</colorPickerMode>
+                    </settings>
+                </colorPicker>
+            </formElements>
+        </field>
+        <field name="text_color" formElement="colorPicker">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Text Colour</label>
+            </settings>
+            <formElements>
+                <colorPicker>
+                    <settings>
+                        <colorFormat>hex</colorFormat>
+                        <colorPickerMode>full</colorPickerMode>
+                    </settings>
+                </colorPicker>
+            </formElements>
+        </field>
+        <field name="shape" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Shape</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Venbhas\ProductLabels\Model\Label\Source\Shape"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="font_size" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="validate-digits" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Font Size (px)</label>
+            </settings>
+        </field>
+        <field name="position" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Position</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Venbhas\ProductLabels\Model\Label\Source\Position"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="position_x" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Offset X (px)</label>
+            </settings>
+        </field>
+        <field name="position_y" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Offset Y (px)</label>
+            </settings>
+        </field>
+    </fieldset>
+</form>

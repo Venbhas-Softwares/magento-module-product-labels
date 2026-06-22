@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/venbhas/product-labels" method="GET">
+        <service class="Venbhas\ProductLabels\Api\LabelRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Venbhas_ProductLabels::label_manage"/>
+        </resources>
+    </route>
+    <route url="/V1/venbhas/product-labels/:labelId" method="GET">
+        <service class="Venbhas\ProductLabels\Api\LabelRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Venbhas_ProductLabels::label_manage"/>
+        </resources>
+    </route>
+    <route url="/V1/venbhas/product-labels" method="POST">
+        <service class="Venbhas\ProductLabels\Api\LabelRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Venbhas_ProductLabels::label_save"/>
+        </resources>
+    </route>
+    <route url="/V1/venbhas/product-labels/:labelId" method="PUT">
+        <service class="Venbhas\ProductLabels\Api\LabelRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Venbhas_ProductLabels::label_save"/>
+        </resources>
+    </route>
+    <route url="/V1/venbhas/product-labels/:labelId" method="DELETE">
+        <service class="Venbhas\ProductLabels\Api\LabelRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Venbhas_ProductLabels::label_delete"/>
+        </resources>
+    </route>
+    <route url="/V1/venbhas/products/:sku/labels" method="GET">
+        <service class="Venbhas\ProductLabels\Api\ProductLabelManagementInterface" method="getBySku"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

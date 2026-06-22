@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="venbhas_product_labels" resource="default" engine="innodb" comment="Product Labels">
+        <column xsi:type="int" name="label_id" unsigned="true" nullable="false" identity="true" comment="Label ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Admin Name"/>
+        <column xsi:type="varchar" name="label_type" nullable="false" length="20" default="text" comment="Label Type"/>
+        <column xsi:type="varchar" name="text_content" nullable="true" length="255" comment="Text Content"/>
+        <column xsi:type="varchar" name="discount_display" nullable="true" length="10" comment="Discount Display"/>
+        <column xsi:type="varchar" name="bg_color" nullable="true" length="7" comment="Background Color"/>
+        <column xsi:type="varchar" name="text_color" nullable="true" length="7" comment="Text Color"/>
+        <column xsi:type="varchar" name="shape" nullable="false" length="20" default="rectangle" comment="Shape"/>
+        <column xsi:type="smallint" name="font_size" unsigned="true" nullable="false" default="12" comment="Font Size"/>
+        <column xsi:type="varchar" name="position" nullable="false" length="20" default="top-left" comment="Position"/>
+        <column xsi:type="smallint" name="position_x" nullable="false" default="0" comment="Position X Offset"/>
+        <column xsi:type="smallint" name="position_y" nullable="false" default="0" comment="Position Y Offset"/>
+        <column xsi:type="smallint" name="priority" unsigned="true" nullable="false" default="0" comment="Priority"/>
+        <column xsi:type="varchar" name="customer_group_ids" nullable="true" length="255" comment="Customer Group IDs"/>
+        <column xsi:type="smallint" name="is_active" unsigned="true" nullable="false" default="1" comment="Is Active"/>
+        <column xsi:type="date" name="from_date" nullable="true" comment="Active From"/>
+        <column xsi:type="date" name="to_date" nullable="true" comment="Active To"/>
+        <column xsi:type="text" name="conditions_serialized" nullable="true" comment="Rule Conditions"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="label_id"/>
+        </constraint>
+        <index referenceId="VENBHAS_PRODUCT_LABELS_IS_ACTIVE" indexType="btree">
+            <column name="is_active"/>
+        </index>
+        <index referenceId="VENBHAS_PRODUCT_LABELS_PRIORITY" indexType="btree">
+            <column name="priority"/>
+        </index>
+    </table>
+    <table name="venbhas_product_labels_store" resource="default" engine="innodb" comment="Product Labels Store">
+        <column xsi:type="int" name="label_id" unsigned="true" nullable="false" comment="Label ID"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" comment="Store ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="label_id"/>
+            <column name="store_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="VENBHAS_PRODUCT_LABELS_STORE_LABEL_ID"
+                    table="venbhas_product_labels_store" column="label_id"
+                    referenceTable="venbhas_product_labels" referenceColumn="label_id"
+                    onDelete="CASCADE"/>
+    </table>
+</schema>
