@@ -72,6 +72,10 @@ class DiscountCalculator
             }
         } catch (\Throwable $e) {
             // Fall back to legacy price accessors below.
+            return [
+            (float) $product->getPrice(),
+            (float) $product->getFinalPrice(),
+            ];
         }
 
         return [

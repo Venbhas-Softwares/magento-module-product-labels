@@ -130,13 +130,11 @@ class DataProvider extends AbstractDataProvider
      * @return int[]
      */
     private function getStoreIdsForForm(array $storeIds): array
-    {
-        $storeIds = array_values(array_unique(array_map('intval', $storeIds)));
-
-        if ($storeIds === [] || $storeIds === [0]) {
-            return ['0'];
-        }
-
-        return array_values(array_filter($storeIds, static fn (int $storeId): bool => $storeId > 0));
+{
+    if (empty($storeIds)) {
+        return ['0'];
     }
+
+    return array_map('strval', $storeIds);
+}
 }

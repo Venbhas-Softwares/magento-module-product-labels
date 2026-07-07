@@ -490,12 +490,12 @@ class Label extends AbstractModel implements LabelInterface, IdentityInterface
         return is_array($attributes) ? $attributes : [];
     }
 
-    /**
-     * Set attributes collected for condition validation.
-     *
-     * @param array<string, bool> $attributes
-     * @return $this
-     */
+   /**
+    * Set collected attributes.
+    *
+    * @param array $attributes
+    * @return $this
+    */
     public function setCollectedAttributes(array $attributes): self
     {
         return $this->setData('collected_attributes', $attributes);

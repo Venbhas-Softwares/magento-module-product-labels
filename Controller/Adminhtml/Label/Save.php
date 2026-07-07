@@ -201,9 +201,10 @@ class Save extends Action implements HttpPostActionInterface
         $data['customer_group_ids'] = $this->idListFormatter->implodeIds(
             $data['customer_group_ids'] ?? ''
         );
-        $storeIds = $this->normalizeStoreIds($data['store_id'] ?? $data['store_ids'] ?? []);
-        $data['store_ids'] = $storeIds;
-        unset($data['store_id']);
+        $storeIds = $this->normalizeStoreIds($data['store_id'] ?? []);
+
+$data['store_ids'] = $storeIds;
+unset($data['store_id']);
 
         if (empty($id = (int) ($data['label_id'] ?? 0))) {
             unset($data['label_id']);
@@ -249,27 +250,24 @@ class Save extends Action implements HttpPostActionInterface
      * @param mixed $storeIds
      * @return int[]
      */
-    private function normalizeStoreIds(mixed $storeIds): array
-    {
-        if (is_string($storeIds)) {
-            $storeIds = $storeIds === '' ? [] : explode(',', $storeIds);
-        }
-
-        if (!is_array($storeIds)) {
-            return [];
-        }
-
-        $normalized = [];
-        foreach ($storeIds as $storeId) {
-            $storeId = (int) $storeId;
-            if ($storeId === 0) {
-                return [];
-            }
-            if ($storeId > 0) {
-                $normalized[] = $storeId;
-            }
-        }
-
-        return array_values(array_unique($normalized));
+    private function normalizeStoreIds($storeIds): array
+{
+    if (is_string($storeIds)) {
+        $storeIds = explode(',', $storeIds);
     }
+
+    if (!is_array($storeIds)) {
+        return [0];
+    }
+
+    $storeIds = array_map('intval', $storeIds);
+
+    // If All Store Views is selected together with others,
+    // keep only All Store Views.
+    if (in_array(0, $storeIds, true)) {
+        return [0];
+    }
+
+    return array_values(array_unique($storeIds));
+}
 }

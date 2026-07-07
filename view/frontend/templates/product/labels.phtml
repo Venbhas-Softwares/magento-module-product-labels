@@ -41,9 +41,10 @@ $positionStyles = [
         $shapeClass = $escaper->escapeHtmlAttr($shape);
         $positionClass = $escaper->escapeHtmlAttr($position);
         ?>
-        <span class="vp-label vp-label--<?= $shapeClass ?> vp-label--<?= $positionClass ?>"
-              style="<?= $escaper->escapeHtmlAttr($style) ?>">
-            <?= $escaper->escapeHtml($label['display_text'] ?? '') ?>
-        </span>
+        <span class="vp-label vp-label--<?= $escaper->escapeHtmlAttr($shape) ?>
+    vp-label--<?= $escaper->escapeHtmlAttr($position) ?>"
+      style="<?= $escaper->escapeHtmlAttr($style) ?>">
+        <?= $escaper->escapeHtml($label['display_text'] ?? '') ?>
+</span>
     <?php endforeach; ?>
 </div>

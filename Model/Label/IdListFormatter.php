@@ -58,23 +58,23 @@ class IdListFormatter
     }
 
     /**
-     * Backward-compatible static alias for explodeIds().
+     * Backward-compatible  alias for explodeIds().
      *
      * @param string|null $value
      * @return string[]
      */
-    public static function explode(?string $value): array
+    public function explode(?string $value): array
     {
         return (new self())->explodeIds($value);
     }
 
     /**
-     * Backward-compatible static alias for implodeIds().
+     * Backward-compatible  alias for implodeIds().
      *
      * @param array|string|null $ids
      * @return string
      */
-    public static function implode(array|string|null $ids): string
+    public function implode(array|string|null $ids): string
     {
         return (new self())->implodeIds($ids);
     }

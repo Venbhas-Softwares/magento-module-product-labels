@@ -55,12 +55,4 @@
                 type="Venbhas\ProductLabels\Plugin\CatalogRule\Condition\ProductPlugin"
                 sortOrder="10"/>
     </type>
-
-    <type name="Magento\Framework\Console\CommandList">
-        <arguments>
-            <argument name="commands" xsi:type="array">
-                <item name="venbhas_productlabels_debug" xsi:type="object">Venbhas\ProductLabels\Console\Command\DebugProductLabels</item>
-            </argument>
-        </arguments>
-    </type>
 </config>

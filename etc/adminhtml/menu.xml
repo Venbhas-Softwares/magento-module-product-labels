@@ -2,13 +2,23 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Venbhas_ProductLabels::label_manage"
-             title="Product Labels"
-             translate="title"
+
+        <!-- Parent Menu -->
+        <add id="Venbhas_ProductLabels::venbhas"
+             title="Venbhas"
              module="Venbhas_ProductLabels"
-             sortOrder="90"
+             sortOrder="80"
              parent="Magento_Catalog::catalog"
+             resource="Venbhas_ProductLabels::venbhas"/>
+
+        <!-- Child Menu -->
+        <add id="Venbhas_ProductLabels::product_labels_manage"
+             title="Product Labels"
+             module="Venbhas_ProductLabels"
+             sortOrder="10"
+             parent="Venbhas_ProductLabels::venbhas"
              action="productlabels/label/index"
-             resource="Venbhas_ProductLabels::label_manage"/>
+             resource="Venbhas_ProductLabels::product_labels_manage"/>
+
     </menu>
 </config>
