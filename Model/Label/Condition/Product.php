@@ -24,6 +24,10 @@ class Product extends CatalogRuleProduct
      */
     public function validate(AbstractModel $model)
     {
+        if ($this->getAttribute() === 'sku') {
+            return $this->validateAttribute((string) $model->getSku());
+        }
+
         $reflectionMethod = new \ReflectionMethod(AbstractProduct::class, 'validate');
         return (bool) $reflectionMethod->invoke($this, $model);
     }
