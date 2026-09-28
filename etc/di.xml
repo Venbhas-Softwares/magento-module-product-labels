@@ -34,7 +34,8 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="venbhas_productlabels_listing_data_source" xsi:type="string">Venbhas\ProductLabels\Ui\DataProvider\Label\Listing\Collection</item>
+                <item name="venbhas_productlabels_listing_data_source" 
+                xsi:type="string">Venbhas\ProductLabels\Ui\DataProvider\Label\Listing\Collection</item>
             </argument>
         </arguments>
     </type>

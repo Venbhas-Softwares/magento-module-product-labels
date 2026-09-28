@@ -20,8 +20,10 @@
         <column xsi:type="date" name="from_date" nullable="true" comment="Active From"/>
         <column xsi:type="date" name="to_date" nullable="true" comment="Active To"/>
         <column xsi:type="text" name="conditions_serialized" nullable="true" comment="Rule Conditions"/>
-        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
-        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated At"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" 
+        comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" 
+        comment="Updated At"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="label_id"/>
         </constraint>

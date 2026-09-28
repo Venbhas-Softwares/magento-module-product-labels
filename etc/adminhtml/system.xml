@@ -5,37 +5,45 @@
         <tab id="venbhas" translate="label" sortOrder="400">
             <label>Venbhas</label>
         </tab>
-        <section id="venbhas_productlabels" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="venbhas_productlabels" translate="label" 
+        type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
             <label>Product Labels</label>
             <tab>venbhas</tab>
             <resource>Venbhas_ProductLabels::config</resource>
-            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="general" translate="label" 
+            type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
-                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enabled" translate="label comment" 
+                type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enable Module</label>
                     <comment>Enable or disable product labels on the storefront.</comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="max_labels" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="max_labels" translate="label comment" 
+                type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Max Labels Per Product</label>
                     <comment>Maximum number of labels shown on each product image.</comment>
                     <validate>validate-digits validate-greater-than-zero</validate>
                 </field>
-                <field id="z_index" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="z_index" translate="label comment" 
+                type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Label Z-Index</label>
                     <comment>CSS z-index for label overlays.</comment>
                     <validate>validate-digits validate-greater-than-zero</validate>
                 </field>
             </group>
-            <group id="developer" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+            <group id="developer" translate="label" 
+            type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                 <label>Developer</label>
-                <field id="enable_logging" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="enable_logging" translate="label comment" 
+                type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Enable Debug Logging</label>
                     <comment>Write resolver activity to var/log/venbhas_product_labels.log.</comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="log_level" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="log_level" translate="label" 
+                type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Log Level</label>
                     <source_model>Venbhas\ProductLabels\Model\Config\Source\LogLevel</source_model>
                     <depends>

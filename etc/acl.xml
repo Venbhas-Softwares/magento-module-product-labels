@@ -6,12 +6,19 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Catalog::catalog">
                     <resource id="Venbhas_ProductLabels::root" title="Product Labels" translate="title" sortOrder="90">
-                        <resource id="Venbhas_ProductLabels::label_manage" title="View Product Labels" translate="title" sortOrder="10"/>
-                        <resource id="Venbhas_ProductLabels::label_save" title="Save Product Labels" translate="title" sortOrder="20"/>
-                        <resource id="Venbhas_ProductLabels::label_delete" title="Delete Product Labels" translate="title" sortOrder="30"/>
+                        <resource id="Venbhas_ProductLabels::label_manage" title="View Product Labels" 
+                        translate="title" 
+                        sortOrder="10"/>
+                        <resource id="Venbhas_ProductLabels::label_save" title="Save Product Labels" 
+                        translate="title" 
+                        sortOrder="20"/>
+                        <resource id="Venbhas_ProductLabels::label_delete" title="Delete Product Labels" 
+                        translate="title" 
+                        sortOrder="30"/>
                     </resource>
                 </resource>
-                <resource id="Venbhas_ProductLabels::config" title="Product Labels Configuration" translate="title" sortOrder="400"/>
+                <resource id="Venbhas_ProductLabels::config" title="Product Labels Configuration" translate="title" 
+                sortOrder="400"/>
             </resource>
         </resources>
     </acl>

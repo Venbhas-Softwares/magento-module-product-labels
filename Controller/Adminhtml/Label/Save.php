@@ -203,8 +203,8 @@ class Save extends Action implements HttpPostActionInterface
         );
         $storeIds = $this->normalizeStoreIds($data['store_id'] ?? []);
 
-$data['store_ids'] = $storeIds;
-unset($data['store_id']);
+        $data['store_ids'] = $storeIds;
+        unset($data['store_id']);
 
         if (empty($id = (int) ($data['label_id'] ?? 0))) {
             unset($data['label_id']);
@@ -251,23 +251,23 @@ unset($data['store_id']);
      * @return int[]
      */
     private function normalizeStoreIds($storeIds): array
-{
-    if (is_string($storeIds)) {
-        $storeIds = explode(',', $storeIds);
-    }
+    {
+        if (is_string($storeIds)) {
+            $storeIds = explode(',', $storeIds);
+        }
 
-    if (!is_array($storeIds)) {
-        return [0];
-    }
+        if (!is_array($storeIds)) {
+            return [0];
+        }
 
-    $storeIds = array_map('intval', $storeIds);
+        $storeIds = array_map('intval', $storeIds);
 
     // If All Store Views is selected together with others,
     // keep only All Store Views.
-    if (in_array(0, $storeIds, true)) {
-        return [0];
-    }
+        if (in_array(0, $storeIds, true)) {
+            return [0];
+        }
 
-    return array_values(array_unique($storeIds));
-}
+        return array_values(array_unique($storeIds));
+    }
 }

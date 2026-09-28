@@ -130,11 +130,11 @@ class DataProvider extends AbstractDataProvider
      * @return int[]
      */
     private function getStoreIdsForForm(array $storeIds): array
-{
-    if (empty($storeIds)) {
-        return ['0'];
-    }
+    {
+        if (empty($storeIds)) {
+            return ['0'];
+        }
 
-    return array_map('strval', $storeIds);
-}
+        return array_map('strval', $storeIds);
+    }
 }

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">venbhas_productlabels_form.venbhas_productlabels_form_data_source</item>
+            <item name="provider" xsi:type="string">
+            venbhas_productlabels_form.venbhas_productlabels_form_data_source</item>
             <item name="namespace" xsi:type="string">venbhas_productlabels_form</item>
         </item>
         <item name="label" xsi:type="string" translate="true">Product Label</item>
@@ -29,7 +31,8 @@
         <settings>
             <submitUrl path="productlabels/label/save"/>
         </settings>
-        <dataProvider class="Venbhas\ProductLabels\Model\Label\DataProvider" name="venbhas_productlabels_form_data_source">
+        <dataProvider class="Venbhas\ProductLabels\Model\Label\DataProvider" 
+        name="venbhas_productlabels_form_data_source">
             <settings>
                 <requestFieldName>label_id</requestFieldName>
                 <primaryFieldName>label_id</primaryFieldName>
@@ -140,7 +143,8 @@
                 <componentType>fieldset</componentType>
             </wrapper>
         </settings>
-        <block class="Venbhas\ProductLabels\Block\Adminhtml\Label\Edit\Tab\Conditions" name="venbhas_productlabels_edit_tab_conditions"/>
+        <block class="Venbhas\ProductLabels\Block\Adminhtml\Label\Edit\Tab\Conditions" 
+        name="venbhas_productlabels_edit_tab_conditions"/>
     </htmlContent>
     <fieldset name="label_settings">
         <settings>
@@ -150,7 +154,9 @@
             <settings>
                 <dataType>text</dataType>
                 <label translate="true">Label Type</label>
-                <notice translate="true">Text: enter fixed badge text (e.g. "Sale", "-20%"). Discount: badge text is calculated automatically from the product's regular price and final price.</notice>
+                <notice translate="true">Text: enter fixed badge text (e.g. "Sale", "-20%"). 
+                Discount: badge text is calculated automatically from the product's regular price and final price.
+                </notice>
             </settings>
             <formElements>
                 <select>
@@ -172,7 +178,10 @@
             <settings>
                 <dataType>text</dataType>
                 <label translate="true">Discount Display Format</label>
-                <notice translate="true">No value is entered here. The discount is calculated per product as (regular price − final price). Choose whether to show that as a percentage (e.g. -20%) or a currency amount (e.g. -$12.00). The label is hidden if the product has no active discount.</notice>
+                <notice translate="true">No value is entered here.
+                The discount is calculated per product as (regular price − final price). 
+                Choose whether to show that as a percentage (e.g. -20%) or a currency amount (e.g. -$12.00). 
+                The label is hidden if the product has no active discount.</notice>
                 <visible>false</visible>
             </settings>
             <formElements>
