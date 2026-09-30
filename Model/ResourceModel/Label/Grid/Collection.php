@@ -13,6 +13,8 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\View\Element\UiComponent\DataProvider\Document;
 use Psr\Log\LoggerInterface;
 use Venbhas\ProductLabels\Model\ResourceModel\Label\Collection as LabelCollection;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 
 /**
  * Product label grid collection.
@@ -28,6 +30,12 @@ class Collection extends LabelCollection implements SearchResultInterface
     /** @var string */
     private $resourceModel;
 
+    /** @var string */
+    private ?SearchCriteriaInterface $searchCriteria = null;
+    
+    /** @var string */
+    private SearchCriteriaBuilder $searchCriteriaBuilder;
+
     /**
      * Initialize grid collection.
      *
@@ -42,6 +50,7 @@ class Collection extends LabelCollection implements SearchResultInterface
      * @param string $model
      * @param AdapterInterface|null $connection
      * @param AbstractDb|null $resource
+     * @param searchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
         EntityFactoryInterface $entityFactory,
@@ -54,10 +63,12 @@ class Collection extends LabelCollection implements SearchResultInterface
         $resourceModel,
         $model = Document::class,
         ?AdapterInterface $connection = null,
-        ?AbstractDb $resource = null
+        ?AbstractDb $resource = null,
+        ?SearchCriteriaBuilder $searchCriteriaBuilder = null
     ) {
         $this->resourceModel = $resourceModel;
         $this->model = $model;
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
         $this->_eventPrefix = $eventPrefix;
         $this->_eventObject = $eventObject;
@@ -90,13 +101,12 @@ class Collection extends LabelCollection implements SearchResultInterface
     /**
      * Get search criteria.
      *
-     * @return null
+     * @return SearchCriteriaInterface
      */
-    public function getSearchCriteria()
+    public function getSearchCriteria(): SearchCriteriaInterface
     {
-        return null;
+        return $this->searchCriteria ??= $this->searchCriteriaBuilder->create();
     }
-
     /**
      * Set search criteria.
      *

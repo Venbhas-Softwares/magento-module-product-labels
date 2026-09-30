@@ -125,11 +125,15 @@ class ImagePlugin
         }
 
         try {
-            return $this->productRepository->getById(
-                $productId,
-                false,
-                (int) $this->storeManager->getStore()->getId()
-            );
+             $resolvedProduct = $this->productRepository->getById(
+                 $productId,
+                 false,
+                 (int) $this->storeManager->getStore()->getId()
+             );
+
+            return $resolvedProduct instanceof \Magento\Catalog\Model\Product
+            ? $resolvedProduct
+            : null;
         } catch (\Exception $e) {
             return $product instanceof \Magento\Catalog\Model\Product ? $product : null;
         }

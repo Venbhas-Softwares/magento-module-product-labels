@@ -43,6 +43,11 @@ class ProductLabelManagement implements ProductLabelManagementInterface
     public function getBySku(string $sku): array
     {
         $product = $this->productRepository->get($sku);
+
+        if (!$product instanceof \Magento\Catalog\Model\Product) {
+            throw new \RuntimeException('Unable to resolve product model.');
+        }
+
         $labels = $this->resolver->getLabelsForProduct($product);
 
         return array_map(function (array $label): array {

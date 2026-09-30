@@ -46,7 +46,7 @@ class Conditions extends Generic implements TabInterface
      */
     public function getTabLabel()
     {
-        return __('Conditions');
+        return (string)__('Conditions');
     }
 
     /**
@@ -54,13 +54,13 @@ class Conditions extends Generic implements TabInterface
      */
     public function getTabTitle()
     {
-        return __('Conditions');
+        return (string)__('Conditions');
     }
 
     /**
      * @inheritdoc
      */
-    public function canShowTab()
+    public function canShowTab(): bool
     {
         return true;
     }
@@ -76,7 +76,7 @@ class Conditions extends Generic implements TabInterface
     /**
      * @inheritdoc
      */
-    public function getTabClass()
+    public function getTabClass(): ?string
     {
         return null;
     }
@@ -84,7 +84,7 @@ class Conditions extends Generic implements TabInterface
     /**
      * @inheritdoc
      */
-    public function getTabUrl()
+    public function getTabUrl(): ?string
     {
         return null;
     }

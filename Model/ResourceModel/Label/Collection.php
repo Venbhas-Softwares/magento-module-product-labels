@@ -60,7 +60,7 @@ class Collection extends AbstractCollection
     {
         $date = $date ?? date('Y-m-d');
 
-        $this->addFieldToFilter('is_active', 1);
+        $this->addFieldToFilter('is_active', ['eq' => 1]);
         $this->addFieldToFilter(
             ['from_date', 'from_date'],
             [

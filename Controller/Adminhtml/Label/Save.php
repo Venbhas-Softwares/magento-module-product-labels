@@ -37,9 +37,6 @@ class Save extends Action implements HttpPostActionInterface
     /** @var Date */
     private $dateFilter;
 
-    /** @var TimezoneInterface */
-    private $localeDate;
-
     /** @var IdListFormatter */
     private $idListFormatter;
 
@@ -49,7 +46,6 @@ class Save extends Action implements HttpPostActionInterface
      * @param LabelResource $labelResource
      * @param DataPersistorInterface $dataPersistor
      * @param Date $dateFilter
-     * @param TimezoneInterface $localeDate
      * @param IdListFormatter $idListFormatter
      */
     public function __construct(
@@ -58,7 +54,6 @@ class Save extends Action implements HttpPostActionInterface
         LabelResource $labelResource,
         DataPersistorInterface $dataPersistor,
         Date $dateFilter,
-        TimezoneInterface $localeDate,
         IdListFormatter $idListFormatter
     ) {
         parent::__construct($context);
@@ -66,7 +61,6 @@ class Save extends Action implements HttpPostActionInterface
         $this->labelResource = $labelResource;
         $this->dataPersistor = $dataPersistor;
         $this->dateFilter = $dateFilter;
-        $this->localeDate = $localeDate;
         $this->idListFormatter = $idListFormatter;
     }
 
