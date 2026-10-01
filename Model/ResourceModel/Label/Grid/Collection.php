@@ -50,7 +50,6 @@ class Collection extends LabelCollection implements SearchResultInterface
      * @param string $model
      * @param AdapterInterface|null $connection
      * @param AbstractDb|null $resource
-     * @param searchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
         EntityFactoryInterface $entityFactory,
@@ -63,16 +62,28 @@ class Collection extends LabelCollection implements SearchResultInterface
         $resourceModel,
         $model = Document::class,
         ?AdapterInterface $connection = null,
-        ?AbstractDb $resource = null,
-        ?SearchCriteriaBuilder $searchCriteriaBuilder = null
+        ?AbstractDb $resource = null
     ) {
         $this->resourceModel = $resourceModel;
         $this->model = $model;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
+
+        parent::__construct(
+            $entityFactory,
+            $logger,
+            $fetchStrategy,
+            $eventManager,
+            $connection,
+            $resource
+        );
+
         $this->_eventPrefix = $eventPrefix;
         $this->_eventObject = $eventObject;
-        $this->_init($this->model, $this->resourceModel);
+
+        $this->_init(
+            $this->model,
+            $this->resourceModel
+        );
+
         $this->setMainTable($mainTable);
     }
 

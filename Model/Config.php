@@ -11,11 +11,11 @@ use Magento\Store\Model\ScopeInterface;
  */
 class Config
 {
-    private const XML_PATH_ENABLED = 'venbhas_productlabels/general/enabled';
-    private const XML_PATH_MAX_LABELS = 'venbhas_productlabels/general/max_labels';
-    private const XML_PATH_Z_INDEX = 'venbhas_productlabels/general/z_index';
-    private const XML_PATH_ENABLE_LOGGING = 'venbhas_productlabels/developer/enable_logging';
-    private const XML_PATH_LOG_LEVEL = 'venbhas_productlabels/developer/log_level';
+    private const XML_PATH_ENABLED = 'catalog/venbhas_product_labels/enabled';
+    private const XML_PATH_MAX_LABELS = 'catalog/venbhas_product_labels/max_labels';
+    private const XML_PATH_Z_INDEX = 'catalog/venbhas_product_labels/z_index';
+    private const XML_PATH_ENABLE_LOGGING = 'catalog/venbhas_product_labels/enable_logging';
+    private const XML_PATH_LOG_LEVEL = 'catalog/venbhas_product_labels/log_level';
 
     /** @var ScopeConfigInterface */
     private $scopeConfig;
