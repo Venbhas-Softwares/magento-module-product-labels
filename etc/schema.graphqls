@@ -1,0 +1,18 @@
+type ProductLabelData {
+    label_id: Int
+    label_type: String
+    display_text: String
+    bg_color: String
+    text_color: String
+    shape: String
+    font_size: Int
+    position: String
+    position_x: Int
+    position_y: Int
+}
+
+interface ProductInterface {
+    productLabels: [ProductLabelData]
+        @resolver(class: "Venbhas\\ProductLabels\\Model\\Resolver\\ProductLabels")
+        @doc(description: "Resolved product labels for the current customer group and store.")
+}

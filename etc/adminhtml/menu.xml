@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+        <!-- Parent Menu -->
+        <add id="Venbhas_ProductLabels::venbhas"
+             title="Venbhas"
+             module="Venbhas_ProductLabels"
+             sortOrder="80"
+             parent="Magento_Catalog::catalog"
+             resource="Venbhas_ProductLabels::venbhas"/>
+
+        <!-- Child Menu -->
+        <add id="Venbhas_ProductLabels::product_labels_manage"
+             title="Product Labels"
+             module="Venbhas_ProductLabels"
+             sortOrder="10"
+             parent="Venbhas_ProductLabels::venbhas"
+             action="productlabels/label/index"
+             resource="Venbhas_ProductLabels::product_labels_manage"/>
+    </menu>
+</config>

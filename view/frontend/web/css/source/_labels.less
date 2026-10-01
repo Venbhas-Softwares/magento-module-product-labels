@@ -1,0 +1,84 @@
+.product-info-media,
+.product.media {
+    position: relative;
+}
+
+.vp-label-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.vp-labels {
+    height: 100%;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.vp-label {
+    align-items: center;
+    display: inline-flex;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.2;
+    padding: 4px 8px;
+    pointer-events: none;
+    position: absolute;
+    white-space: nowrap;
+}
+
+.vp-label--rectangle {
+    border-radius: 2px;
+}
+
+.vp-label--circle {
+    border-radius: 50%;
+    min-height: 2.5em;
+    min-width: 2.5em;
+    padding: .5em;
+}
+
+.vp-label--ribbon {
+    border-radius: 0;
+    transform: rotate(-45deg);
+    transform-origin: center;
+}
+
+.vp-label--top-left {
+    left: 0;
+    top: 0;
+}
+
+.vp-label--top-right {
+    right: 0;
+    top: 0;
+}
+
+.vp-label--bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.vp-label--bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.vp-label--top-center {
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.vp-label--bottom-center {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.vp-label--ribbon.vp-label--top-left,
+.vp-label--ribbon.vp-label--top-right {
+    top: 12px;
+}

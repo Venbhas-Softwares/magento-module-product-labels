@@ -1,0 +1,50 @@
+<?php
+/**
+ * @var \Venbhas\ProductLabels\Block\Product\Labels $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+$labels = $block->getLabels();
+if ($labels === []) {
+    return;
+}
+
+$zIndex = $block->getZIndex();
+
+$positionStyles = [
+    'top-left' => 'top:0;left:0;',
+    'top-right' => 'top:0;right:0;',
+    'bottom-left' => 'bottom:0;left:0;',
+    'bottom-right' => 'bottom:0;right:0;',
+    'top-center' => 'top:0;left:50%;transform:translateX(-50%);',
+    'bottom-center' => 'bottom:0;left:50%;transform:translateX(-50%);',
+];
+?>
+<div class="vp-labels"
+     style="z-index: <?= (int) $zIndex ?>;position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;">
+    <?php foreach ($labels as $label): ?>
+        <?php
+        $position = (string) ($label['position'] ?? 'top-left');
+        $shape = (string) ($label['shape'] ?? 'rectangle');
+        $offsetX = (int) ($label['position_x'] ?? 0);
+        $offsetY = (int) ($label['position_y'] ?? 0);
+        $style = sprintf(
+            'background-color:%s;color:%s;font-size:%dpx;%s',
+            $label['bg_color'] ?? '#000000',
+            $label['text_color'] ?? '#ffffff',
+            (int) ($label['font_size'] ?? 12),
+            $positionStyles[$position] ?? $positionStyles['top-left']
+        );
+        if ($offsetX !== 0 || $offsetY !== 0) {
+            $style .= sprintf('margin:%dpx 0 0 %dpx;', $offsetY, $offsetX);
+        }
+        $shapeClass = $escaper->escapeHtmlAttr($shape);
+        $positionClass = $escaper->escapeHtmlAttr($position);
+        ?>
+        <span class="vp-label vp-label--<?= $escaper->escapeHtmlAttr($shape) ?>
+    vp-label--<?= $escaper->escapeHtmlAttr($position) ?>"
+      style="<?= $escaper->escapeHtmlAttr($style) ?>">
+        <?= $escaper->escapeHtml($label['display_text'] ?? '') ?>
+</span>
+    <?php endforeach; ?>
+</div>

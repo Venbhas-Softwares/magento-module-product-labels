@@ -1,36 +1,30 @@
 {
     "name": "venbhas/module-product-labels",
-    "description": "Rule-based product labels and badges for Magento 2. Displays configurable text and discount badges on product images across all contexts — PLP, PDP, widgets — with customer group targeting, REST API, and GraphQL support.",
+    "description": "Configurable product labels and badges with rule-based conditions for Magento 2.",
     "type": "magento2-module",
     "version": "1.0.0",
-    "license": "OSL-3.0",
-    "keywords": [
-        "magento2",
-        "product labels",
-        "product badges",
-        "discount badge",
-        "catalog rules",
-        "graphql",
-        "rest api"
+    "license": [
+        "MIT"
     ],
     "authors": [
         {
-            "name": "Venbhas Softwares",
+            "name": "Karthic Kannan N",
             "email": "support@venbhas.com"
         }
     ],
     "require": {
         "php": "~8.1.0||~8.2.0||~8.3.0||~8.4.0",
-        "magento/framework": "^103.0",
-        "magento/module-store": "^101.1",
-        "magento/module-catalog": "^104.0",
-        "magento/module-catalog-rule": "^101.2",
-        "magento/module-rule": "^100.4",
-        "magento/module-backend": "^102.0",
-        "magento/module-ui": "^101.2",
-        "magento/module-config": "^101.2",
-        "magento/module-graph-ql": "^100.4",
-        "magento/module-catalog-graph-ql": "^100.4"
+        "magento/framework": "*",
+        "magento/module-store": "*",
+        "magento/module-catalog": "*",
+        "magento/module-backend": "*",
+        "magento/module-ui": "*",
+        "magento/module-config": "*",
+        "magento/module-rule": "*",
+        "magento/module-catalog-rule": "*",
+        "magento/module-customer": "*",
+        "magento/module-graph-ql": "*",
+        "magento/module-catalog-graph-ql": "*"
     },
     "autoload": {
         "files": [
@@ -39,13 +33,5 @@
         "psr-4": {
             "Venbhas\\ProductLabels\\": ""
         }
-    },
-    "extra": {
-        "map": [
-            [
-                "*",
-                "Venbhas/ProductLabels"
-            ]
-        ]
     }
 }
